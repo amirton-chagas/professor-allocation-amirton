@@ -19,7 +19,7 @@ import com.project.professorallocation.model.Department;
 public class DepartmentRepositoryTests {
 
 	@Autowired
-	DepartmentRepository repository;
+	private DepartmentRepository repository;
 	
 	@Test
 	public void findAll() {
@@ -30,5 +30,49 @@ public class DepartmentRepositoryTests {
 		for(Department item : items) {
 			System.out.println(item);
 		}
+	}
+	
+	@Test
+	public void findDepartmentsByPartOfTheName() {
+		List<Department> depts = repository.findByNameLike("%tic%");
+		
+		System.out.println("elementos retornados: " + depts.size());
+		depts.forEach(System.out::println);
+	}
+	
+	@Test
+	public void findSpecificDepartment() {
+		Department dept = repository.findById(5L).orElse(null);
+		
+		System.out.println(dept);
+	}
+	
+	@Test
+	public void create() {
+		Department departmentBeingCreated = new Department();
+		departmentBeingCreated.setName("Departamento de Informática");
+		
+		departmentBeingCreated = repository.save(departmentBeingCreated);
+		System.out.println(departmentBeingCreated);
+	}
+	
+	@Test
+	public void update() {
+		Department departmentBeingCreated = new Department();
+		departmentBeingCreated.setId(5L);
+		departmentBeingCreated.setName("Departamento de Fisioterapia");
+		
+		departmentBeingCreated = repository.save(departmentBeingCreated);
+		System.out.println(departmentBeingCreated);
+	}
+	
+	@Test
+	public void delete() {
+		repository.deleteById(6L);
+	}
+	
+	@Test
+	public void deleteAllItems() {
+		repository.deleteAllInBatch();
 	}
 }

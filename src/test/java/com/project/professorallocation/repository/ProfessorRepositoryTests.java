@@ -42,8 +42,8 @@ public class ProfessorRepositoryTests {
 	@Test
 	public void create() {
 		Professor professorBeingCreated = new Professor();
-		professorBeingCreated.setName("Amirton Chagas");
-		professorBeingCreated.setCpf("98765432100");
+		professorBeingCreated.setName("Jose Teste");
+		professorBeingCreated.setCpf("12345689452");
 		professorBeingCreated.setDepartmentId(17L);
 		
 		professorBeingCreated = repository.save(professorBeingCreated);

@@ -17,7 +17,11 @@ public class DepartmentService {
 	}
 	
 	public List<Department> findAll(String name) {
-        return repository.findAll();
+		if (name == null || name.trim().equals("")) {
+			return repository.findAll();
+		} else {
+			return repository.findByNameContaining(name);
+		}
     }
 
     public Department findById(Long id) {

@@ -16,6 +16,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+
 @Entity
 @Table(name = "allocation")
 public class Allocation {
@@ -27,10 +33,16 @@ public class Allocation {
 	@Column(nullable = false, name = "day")
 	private DayOfWeek dayOfWeek;
 
+	@JsonFormat(pattern = "HH:mmZ", timezone = "America/Recife")
+	@JsonSerialize(using = DateSerializer.class)
+	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date startHour;
 
+	@JsonFormat(pattern = "HH:mmZ", timezone = "America/Recife")
+	@JsonSerialize(using = DateSerializer.class)
+	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIME)
 	private Date endHour;

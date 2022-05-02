@@ -9,9 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 @Table(name = "professor")
 public class Professor {
+	@JsonProperty(access = Access.READ_ONLY)
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +27,7 @@ public class Professor {
 	@Column(length = 11, nullable = false, unique = true)
 	private String cpf;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
 	

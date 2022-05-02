@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,9 +31,9 @@ public class ProfessorController {
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Professor>> findAll() {
-		List<Professor> allProfessors = service.findAll(null);
+		List<Professor> allItems = service.findAll(null);
 
-		return new ResponseEntity<>(allProfessors, HttpStatus.OK);
+		return new ResponseEntity<>(allItems, HttpStatus.OK);
 	}
 
 	@GetMapping(path = "/{item_id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -82,4 +82,12 @@ public class AllocationService {
 
 		return collision;
 	}
+
+	public List<Allocation> findByProfessorId(Long id) {
+		return repository.findByProfessorId(id);
+	}
+
+	public List<Allocation> findByCourseId(Long id) {
+		return repository.findByCourseId(id);
+	}
 }

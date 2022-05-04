@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>professor-allocation-amirton</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-NIGHTLY</version>
 	<name>professor-allocation-amirton</name>
 	<description>Professor Allocation Backend</description>
 	<properties>
@@ -37,6 +37,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.maven</groupId>
+		  <artifactId>maven-model</artifactId>
+		  <version>3.3.9</version>
 		</dependency>
 	</dependencies>
 
